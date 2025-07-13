@@ -14,7 +14,7 @@ const SwipperSlides = () => {
             .then((res) => setListMovie(res.data.items))
             .catch((err) => console.log(err));
     }, []);
-    console.log(listMovie);
+    // console.log(listMovie);
     return (
         <div className="mt-5 bg-[#131720] pb-8">
             <Swiper

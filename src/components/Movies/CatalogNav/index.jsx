@@ -2,7 +2,7 @@ import { ChevronDown } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import ListMovies from '../ListMovies';
 
-const KindMovies = () => {
+const ListMovies1 = () => {
     const movieKind = [
         { type: 'Hành Động', slug: 'hanh-dong' },
         { type: 'Tình Cảm', slug: 'tinh-cam' },
@@ -58,4 +58,4 @@ const KindMovies = () => {
     );
 };
 
-export default KindMovies;
+export default ListMovies1;

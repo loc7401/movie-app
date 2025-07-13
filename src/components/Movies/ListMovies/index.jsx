@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { CirclePlay, Star, Bookmark } from 'lucide-react';
-import Loading from '../Loading';
+import Loading from '../../Loading';
 import { useNavigate } from 'react-router-dom';
 
 const ListMovies = ({ typeMovie }) => {
@@ -51,7 +51,7 @@ const ListMovies = ({ typeMovie }) => {
                         >
                             <div className="relative aspect-[190/270] overflow-hidden rounded-2xl">
                                 <img
-                                    className="h-full w-full object-cover transition-all duration-400 group-hover:blur-[3px]"
+                                    className="h-full w-full transition-all duration-400 group-hover:blur-[3px]"
                                     src={`https://phimimg.com/${movie.poster_url}`}
                                 />
                                 <CirclePlay
