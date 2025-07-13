@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 // Import Swiper styles
 import 'swiper/css';
 
-const MainSlide = () => {
+const SwipperSlides = () => {
     const [listMovie, setListMovie] = useState([]);
 
     useEffect(() => {
@@ -16,7 +16,7 @@ const MainSlide = () => {
     }, []);
     console.log(listMovie);
     return (
-        <div className="mt-[112px] bg-[#131720] pb-8">
+        <div className="mt-5 bg-[#131720] pb-8">
             <Swiper
                 spaceBetween={30}
                 slidesPerView={3}
@@ -39,7 +39,10 @@ const MainSlide = () => {
             >
                 {listMovie.map((movie, index) => {
                     return (
-                        <SwiperSlide key={index} className="overflow-hidden rounded-2xl">
+                        <SwiperSlide
+                            key={index}
+                            className="overflow-hidden rounded-2xl"
+                        >
                             <div className="group relative aspect-[410/330] w-full overflow-hidden rounded-2xl">
                                 <img
                                     src={movie.thumb_url}
@@ -58,7 +61,9 @@ const MainSlide = () => {
                                         <span className="mr-3 text-[#e0e0e0]">
                                             {movie.episode_current}
                                         </span>
-                                        <span className="text-[#e0e0e0]">{movie.year}</span>
+                                        <span className="text-[#e0e0e0]">
+                                            {movie.year}
+                                        </span>
                                     </div>
                                 </div>
                             </div>
@@ -70,4 +75,4 @@ const MainSlide = () => {
     );
 };
 
-export default MainSlide;
+export default SwipperSlides;

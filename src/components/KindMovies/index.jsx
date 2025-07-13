@@ -40,7 +40,7 @@ const KindMovies = () => {
                     {movieKind.map((elem, index) => {
                         return (
                             <button
-                                id={index}
+                                key={index}
                                 onClick={() =>
                                     handleChangTypeMovie(elem, index)
                                 }

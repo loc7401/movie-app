@@ -1,13 +1,16 @@
-import Header from './components/Header';
-import MainSlide from './components/SwipperSlides';
-import KindMovies from './components/KindMovies';
+import { Routes, Route } from 'react-router-dom';
+
+import Home from '../src/Page/Home';
+import MovieDetail from './Page/MovieDetail';
+import Header from '../src/components/Header';
 
 function App() {
     return (
         <div className="min-h-screen bg-[#131720]">
-            <Header></Header>
-            <MainSlide />
-            <KindMovies />
+            <Routes>
+                <Route path="/" element={<Home />}></Route>
+                <Route path="/movie/:slug" element={<MovieDetail />}></Route>
+            </Routes>
         </div>
     );
 }
