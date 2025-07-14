@@ -2,11 +2,14 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
 // Import Swiper styles
 import 'swiper/css';
 
 const SwipperSlides = () => {
     const [listMovie, setListMovie] = useState([]);
+    const navigate = useNavigate();
 
     useEffect(() => {
         axios
@@ -14,7 +17,11 @@ const SwipperSlides = () => {
             .then((res) => setListMovie(res.data.items))
             .catch((err) => console.log(err));
     }, []);
-    // console.log(listMovie);
+
+    const handleWatchMovie = (slug) => {
+        navigate(`/movie/${slug}`);
+    };
+    console.log(listMovie);
     return (
         <div className="mt-5 bg-[#131720] pb-8">
             <Swiper
@@ -26,14 +33,17 @@ const SwipperSlides = () => {
                 slideToClickedSlide={true}
                 style={{ paddingLeft: '15%', paddingRight: '15%' }}
                 breakpoints={{
+                    1400: {
+                        slidesPerView: 3,
+                    },
                     1024: {
-                        slidesPerView: 3,
+                        slidesPerView: 2,
                     },
-                    768: {
-                        slidesPerView: 3,
-                    },
-                    480: {
+                    576: {
                         slidesPerView: 1.5,
+                    },
+                    380: {
+                        slidesPerView: 1,
                     },
                 }}
             >
@@ -43,7 +53,10 @@ const SwipperSlides = () => {
                             key={index}
                             className="overflow-hidden rounded-2xl"
                         >
-                            <div className="group relative aspect-[410/330] w-full overflow-hidden rounded-2xl">
+                            <div
+                                className="group relative aspect-[410/330] w-full cursor-pointer overflow-hidden rounded-2xl"
+                                onClick={() => handleWatchMovie(movie.slug)}
+                            >
                                 <img
                                     src={movie.thumb_url}
                                     alt="Movie Poster"

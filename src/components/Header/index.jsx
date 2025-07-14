@@ -8,7 +8,7 @@ const Header = () => {
                 <a href="/">
                     <img className="w-14" src={movieLogo} alt="logo-image" />
                 </a>
-                <div>
+                <div className="hidden lg:block">
                     <nav className="space-x-6">
                         <a
                             href="#"

@@ -30,7 +30,7 @@ const MovieDetail = () => {
                 <div className="grid grid-cols-[1fr_3fr] gap-6">
                     <div className="relative overflow-hidden rounded-lg">
                         <img
-                            className="h-full object-cover"
+                            className="h-full"
                             src={currentMovie.movie?.poster_url}
                         />
                         {typeMovie == 1 && (

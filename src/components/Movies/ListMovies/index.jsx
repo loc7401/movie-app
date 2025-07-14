@@ -8,14 +8,14 @@ const ListMovies = ({ typeMovie }) => {
     const [listMovie, setListMovie] = useState([]);
     const [movieTypeName, setMovieTypeName] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
+
     const navigate = useNavigate();
+    const movieSlug = localStorage.getItem('slug') || typeMovie || 'hanh-dong';
 
     useEffect(() => {
         setIsLoading(true);
         axios
-            .get(
-                `https://phimapi.com/v1/api/the-loai/${typeMovie || 'hanh-dong'}`
-            )
+            .get(`https://phimapi.com/v1/api/the-loai/${movieSlug}`)
             .then((res) => {
                 setListMovie(res.data.data.items);
                 setMovieTypeName(res.data.data);
@@ -35,11 +35,11 @@ const ListMovies = ({ typeMovie }) => {
             <Loading />
         </div>
     ) : (
-        <>
-            <h3 className="mx-auto mt-6 grid max-w-[1200px] text-2xl text-[#e0e0e0]">
+        <div className="mr-auto ml-auto px-3 sm:max-w-[540px] md:max-w-[720px] lg:max-w-[960px] xl:max-w-[1140px]">
+            <h3 className="mx-auto mt-6 text-2xl text-[#e0e0e0]">
                 {`Thể loại: ${movieTypeName?.titlePage}`}
             </h3>
-            <div className="mx-auto mt-6 grid max-w-[1200px] grid-cols-6 gap-8 pb-10">
+            <div className="mx-auto mt-6 grid max-w-[1200px] grid-cols-2 gap-8 pb-10 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-6">
                 {listMovie?.map((movie, index) => {
                     return (
                         <div
@@ -95,7 +95,7 @@ const ListMovies = ({ typeMovie }) => {
                     );
                 })}
             </div>
-        </>
+        </div>
     );
 };
 
