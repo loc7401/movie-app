@@ -6,7 +6,7 @@ import Header from '../src/components/Header';
 
 function App() {
     return (
-        <div className="min-h-screen bg-[#131720]">
+        <div className="min-h-screen bg-[#131720] pb-6">
             <Routes>
                 <Route path="/" element={<Home />}></Route>
                 <Route path="/movie/:slug" element={<MovieDetail />}></Route>

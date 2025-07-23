@@ -3,6 +3,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { ChevronDown } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import ListMovies from '../ListMovies';
+import Container from '../../ElementCustom/Container';
 
 // Import Swiper styles
 import 'swiper/css';
@@ -12,7 +13,7 @@ const CatalogNav = () => {
     //     { type: 'Tình Cảm', slug: 'tinh-cam' },
     //     { type: 'Hài Hước', slug: 'hai-huoc' },
     // ];
-    const [typeMovie, setTypeMovie] = useState('');
+    const [typeMovie, setTypeMovie] = useState('hanh-dong');
     const [movieKind, setmovieKind] = useState([]);
 
     useEffect(() => {
@@ -27,9 +28,8 @@ const CatalogNav = () => {
     useEffect(() => {
         axios
             .get(`https://phimapi.com/the-loai`)
-            .then((res) =>
-                setmovieKind(res.data).catch((err) => console.log(err))
-            );
+            .then((res) => setmovieKind(res.data))
+            .catch((err) => console.log(err));
     }, []);
 
     console.log(movieKind);
@@ -40,16 +40,9 @@ const CatalogNav = () => {
 
     return (
         <>
-            <div className="mr-auto ml-auto px-3 sm:max-w-[540px] md:max-w-[720px] lg:max-w-[960px] xl:max-w-[1140px]">
-                <div className="mx-auto mt-5 flex items-center justify-between rounded-2xl bg-[#151f30] px-8 py-4">
-                    {/* <nav className="flex space-x-6">
-                        <a
-                            href="#"
-                            className="flex items-center text-sm font-medium text-[#e0e0e0] transition-colors duration-300 ease-in-out hover:text-[#2f80ed]"
-                        >
-                            Thể Loại
-                            <ChevronDown className="ml-1" size={14} />
-                        </a>
+            <Container>
+                <div className="mx-auto mt-5 flex flex-col justify-between rounded-2xl bg-[#151f30] px-8 py-4 lg:flex-row lg:items-center">
+                    <nav className="mb-4 flex min-w-[190px] space-x-6 lg:mb-0">
                         <a
                             href="#"
                             className="flex items-center text-sm font-medium text-[#e0e0e0] transition-colors duration-300 ease-in-out hover:text-[#2f80ed]"
@@ -57,16 +50,37 @@ const CatalogNav = () => {
                             Năm
                             <ChevronDown className="ml-1" size={14} />
                         </a>
-                    </nav> */}
-                    <div className="flex min-w-[300px] items-center justify-between rounded-3xl bg-[#131720] p-[6px]">
+                        <a
+                            onClick={() => setTypeMovie('all')}
+                            href="#"
+                            className={`${typeMovie === 'all' ? 'font-bold text-[#2f80ed]' : 'font-medium text-[#e0e0e0]'} flex items-center text-sm transition-colors duration-300 ease-in-out hover:text-[#2f80ed]`}
+                        >
+                            Tất cả
+                        </a>
+                    </nav>
+                    <div className="flex min-w-[300px] items-center justify-between rounded-3xl bg-[#131720] p-5">
                         <Swiper
-                            spaceBetween={50}
-                            slidesPerView={6}
+                            spaceBetween={10}
+                            slidesPerView={5}
                             navigation
                             pagination={{ clickable: true }}
                             scrollbar={{ draggable: true }}
-                            loop={true}
+                            loop={false}
                             grabCursor={true}
+                            breakpoints={{
+                                1400: {
+                                    slidesPerView: 9,
+                                },
+                                768: {
+                                    slidesPerView: 6,
+                                },
+                                576: {
+                                    slidesPerView: 4,
+                                },
+                                380: {
+                                    slidesPerView: 3,
+                                },
+                            }}
                             className="p-2"
                         >
                             {movieKind.map((elem, index) => {
@@ -77,7 +91,7 @@ const CatalogNav = () => {
                                             onClick={() =>
                                                 handleChangTypeMovie(elem)
                                             }
-                                            className={`rounded-2xl ${typeMovie === elem.slug ? 'bg-[#151f30] text-[#2f80ed]' : 'text-[#e0e0e0]'} cursor-pointer p-3 text-sm font-medium transition-colors duration-200 ease-in-out`}
+                                            className={`w-full rounded-2xl py-2 ${typeMovie === elem.slug ? 'bg-[#151f30] text-[#2f80ed]' : 'text-[#e0e0e0]'} cursor-pointer text-sm font-medium transition-colors duration-200 ease-in-out`}
                                         >
                                             {elem.name}
                                         </button>
@@ -87,7 +101,7 @@ const CatalogNav = () => {
                         </Swiper>
                     </div>
                 </div>
-            </div>
+            </Container>
 
             <ListMovies typeMovie={typeMovie} />
         </>

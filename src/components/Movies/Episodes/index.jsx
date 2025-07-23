@@ -9,7 +9,7 @@ const Episodes = ({ currentMovie }) => {
 
     return (
         <div className="flex flex-col">
-            <div className="mb-2 flex items-start">
+            <div className="mb-6 grid grid-cols-1 gap-3 lg:grid-cols-[1fr_8fr]">
                 <div className="mr-3 min-w-[165px]">
                     <span className="text-white">
                         {currentMovie.episodes[0]?.server_name}:
@@ -33,7 +33,7 @@ const Episodes = ({ currentMovie }) => {
             </div>
 
             {listEpisode2 && (
-                <div className="mb-2 flex items-start">
+                <div className="grid grid-cols-1 gap-3 lg:grid-cols-[1fr_8fr]">
                     <div className="mr-3 min-w-[165px]">
                         <span className="text-white">
                             {currentMovie.episodes[1]?.server_name}:

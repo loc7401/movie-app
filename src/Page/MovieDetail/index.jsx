@@ -5,6 +5,7 @@ import Header from '../../components/Header';
 import { useParams } from 'react-router-dom';
 import { Star } from 'lucide-react';
 import Episodes from '../../components/Movies/Episodes';
+import Container from '../../components/ElementCustom/Container';
 
 const MovieDetail = () => {
     const [currentMovie, setCurrentMovie] = useState([]);
@@ -26,8 +27,8 @@ const MovieDetail = () => {
     return (
         <>
             <Header />
-            <div className="mx-auto mt-6 max-w-[1200px] pb-10">
-                <div className="grid grid-cols-[1fr_3fr] gap-6">
+            <Container className="mt-6 pb-10">
+                <div className="grid grid-cols-1 gap-6 md:grid-cols-[1fr_1fr] xl:grid-cols-[1fr_3fr]">
                     <div className="relative overflow-hidden rounded-lg">
                         <img
                             className="h-full"
@@ -168,7 +169,7 @@ const MovieDetail = () => {
                         <Episodes currentMovie={currentMovie} />
                     </div>
                 )}
-            </div>
+            </Container>
         </>
     );
 };
