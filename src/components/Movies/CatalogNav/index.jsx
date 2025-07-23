@@ -41,7 +41,7 @@ const CatalogNav = () => {
     return (
         <>
             <Container>
-                <div className="mx-auto mt-5 flex flex-col justify-between rounded-2xl bg-[#151f30] px-8 py-4 lg:flex-row lg:items-center">
+                <div className="mx-auto mt-5 flex flex-col justify-between rounded-2xl bg-[#151f30] px-2 py-4 sm:px-8 lg:flex-row lg:items-center">
                     <nav className="mb-4 flex min-w-[190px] space-x-6 lg:mb-0">
                         <a
                             href="#"
@@ -58,7 +58,7 @@ const CatalogNav = () => {
                             Tất cả
                         </a>
                     </nav>
-                    <div className="flex min-w-[300px] items-center justify-between rounded-3xl bg-[#131720] p-5">
+                    <div className="flex min-w-[300px] items-center justify-between rounded-3xl bg-[#131720] px-2 py-5 sm:px-5">
                         <Swiper
                             spaceBetween={10}
                             slidesPerView={5}
@@ -76,9 +76,6 @@ const CatalogNav = () => {
                                 },
                                 576: {
                                     slidesPerView: 4,
-                                },
-                                380: {
-                                    slidesPerView: 3,
                                 },
                             }}
                             className="p-2"

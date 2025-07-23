@@ -1,12 +1,12 @@
 import { Search, LogIn } from 'lucide-react';
-import movieLogo from '../../assets/logo/movie-logo.png';
+import movieLogo from '../../assets/logo/netflix.png';
 
 const Header = () => {
     return (
         <header className="sticky top-0 z-[999] w-full bg-[#131720]">
-            <div className="mx-auto flex max-w-[1200px] items-center justify-between px-4 py-4">
-                <a href="/">
-                    <img className="w-14" src={movieLogo} alt="logo-image" />
+            <div className="mx-auto flex max-w-[1200px] items-center justify-between px-4 py-2">
+                <a href="/" className="m-3">
+                    <img className="w-24" src={movieLogo} alt="logo-image" />
                 </a>
                 <div className="hidden lg:block">
                     <nav className="space-x-6">
@@ -61,7 +61,6 @@ const Header = () => {
                     </div>
 
                     <button className="flex items-center text-sm text-[#e0e0e0] transition-colors duration-300 ease-in-out hover:text-[#2f80ed]">
-                        Sign in
                         <LogIn className="ml-2" size={16} />
                     </button>
                 </div>
